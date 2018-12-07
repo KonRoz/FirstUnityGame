@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement: {fileID: 114521873872671078}
+  isTouchingTheGround: 1
 --- !u!114 &114521873872671078
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -138,6 +139,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 54662430761763066}
-  fowardForce: 5000
+  theCollision: {fileID: 114125740915791780}
+  fowardForce: 2500
   sidewaysForce: 80
+  jumpVelocity: 8
   minYPosition: -2
+  currentSpeed: {x: 0, y: 0, z: 0}

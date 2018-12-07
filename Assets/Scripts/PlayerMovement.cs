@@ -11,6 +11,9 @@ public class PlayerMovement : MonoBehaviour {
     public float sidewaysForce = 500f;
     public float jumpVelocity = 10f;
     public float minYPosition = -2f;
+
+    //The Velocity At the Present Position
+    public Vector3 currentSpeed;
     
 
     // Update is called once per frame
@@ -38,11 +41,14 @@ public class PlayerMovement : MonoBehaviour {
             //we want the cube to fall back to earth
             rb.useGravity = true;
 
+            //the component velocities at the time of jumping are calculated by using the rigidBody's position in each direction
+            currentSpeed = (rb.GetPointVelocity(new Vector3(rb.position.x, rb.position.y, rb.position.z)));
+
             //PlayerCollision is referenced to check if the block is touching the ground when the space bar is pressed
             if (theCollision.isTouchingTheGround == true)
             {
                 //the new velocity needs fixing: the current velocity should be inputed in the x and z components (especially the z eek!)
-                rb.velocity = new Vector3(0 ,jumpVelocity, 10);
+                rb.velocity = new Vector3(currentSpeed.x ,jumpVelocity, currentSpeed.z);
 
                 //when this is set to false the player cannot keep pressing the space bar to go infinitely upwards
                 theCollision.isTouchingTheGround = false;
